@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+<title>MK CS Tools</title>
+
+<meta name="description" content="Responsive Animated Border Menus with CSS Transitions" />
+<meta name="keywords" content="navigation, menu, responsive, border, overlay, css transition" />
+<meta name="author" content="Codrops" />
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="css/demo.css" />
+<link rel="stylesheet" type="text/css" href="css/icons.css" />
+<link rel="stylesheet" type="text/css" href="css/style2.css" />
+<script src="js/modernizr.custom.js"></script>
+
+
+
+<link rel="apple-touch-icon-precomposed" href="favicon-152.png">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+
+<style>
+	.templeteBox{display: block;margin: 4px 79px 0 10px;}
+	.templeteBox input{width: 100%}
+</style>
+
+
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<!--<script src="lib/jquery-3.4.1.min.js"></script>-->
+
+<script type="text/javascript" src="js/browserChk.js"></script>
+
+<script type="text/javascript" src="js/tools.js"></script>
+<script type="text/javascript" src="js/htmlLoader.js"></script>
+
+
+
+
+</head>
+<body>
+
+<div class="container">
+	<header class="codrops-header">
+		<nav class="codrops-demos">
+			<a class="current-demo" href="index.html">Main</a>
+			<a href="tools.html">Tool</a>
+			<a href="tamplate.html">Tamplate</a>
+
+		</nav>
+	</header>
+
+	<div>
+		
+	</div>
+
+</div><!-- /container -->
+
+</body>
+
+</html>

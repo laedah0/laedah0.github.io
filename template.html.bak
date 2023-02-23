@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+<title>MK CS Tools</title>
+
+
+<meta name="description" content="미건철물장식" />
+<meta name="keywords" content="" />
+<meta name="author" content="Laedah0" />
+<link rel="shortcut icon" href="./favicon.ico">
+<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="css/demo.css" />
+<link rel="stylesheet" type="text/css" href="css/icons.css" />
+<link rel="stylesheet" type="text/css" href="css/style2.css" />
+<link rel="stylesheet" type="text/css" href="css/vicons-font.css" />
+<link rel="stylesheet" type="text/css" href="css/base.css" />
+<!--link rel="stylesheet" type="text/css" href="css/buttons.css" /-->
+
+<script src="js/modernizr.custom.js"></script>
+
+
+
+
+
+
+<link rel="apple-touch-icon-precomposed" href="favicon-152.png">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+
+<style>
+	.templeteBox{display: block;margin: 4px 79px 0 10px;}
+	.templeteBox input{width: 100%}
+	.div{line-height:200%}
+</style>
+
+
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<!--<script src="lib/jquery-3.4.1.min.js"></script>-->
+
+<script type="text/javascript" src="js/browserChk.js"></script>
+
+<script type="text/javascript" src="js/tools.js"></script>
+<script type="text/javascript" src="js/htmlLoader.js"></script>
+
+
+
+
+</head>
+<body>
+
+<div class="container">
+	<header class="codrops-header">
+		<nav class="codrops-demos">
+			<a href="index.html">Main</a>
+			<a href="tools.html">Tool</a>
+			<a class="current-demo" href="tamplate.html">Tamplate</a>
+		</nav>
+	</header>
+
+
+	
+	<div><h3>자주 사용하는 문구</h3>
+		<div id="templateSelect">
+		</div>
+		<h5>-문의</h5>
+		<div id="favoritTemp_1">
+		</div>	
+		<h5>-안내</h5>
+		<div id="favoritTemp_2">
+		</div>	
+		<h5>-반품/교환</h5>
+		<div id="favoritTemp_3">
+		</div>	
+		<div id="favoritTemp">
+		</div>	
+		<pre><a id="templeteTxt" >-</a></pre>
+	</div>
+
+	<div><h3>주문서 제작</h3>
+
+		<div id="orderCalculator">
+			<button type="button" class="button button--moema button--inverted button--text-thick button--size-s" id="btn_addorderList" onClick="clickorderListBtn(1)">항목추가</button>
+			<div id="orderListCon">
+				
+			</div>
+			배송비&nbsp;
+			<select id="deleveryType">
+				<option value="2500" selected>2,500원</option>
+				<option value="0">무료</option>
+				<option value="5500">제주(+3,000)</option>
+				<option value="7500">제주외도서(+5,000)</option>
+			</select>
+			<br/>
+			<input type="button" class="button button--moema button--inverted button--text-thick button--size-s" onClick="resultorderCalc()" value="확인"/> 
+			<input type="button" class="button button--moema button--inverted button--text-thick button--size-s" onClick="orderTxt2CopyToClipboard()" value="공유"/>
+		</div>
+		<pre><a id="orderTxtCalc" >-</a></pre>
+		<pre><a id="orderTxt" >-</a></pre>
+	</div>
+	
+		<div><h3>반품누락 청구서 제작</h3>
+
+		<div id="missingReturnCalculator">
+			<button type="button" class="button button--moema button--inverted button--text-thick button--size-s" id="btn_addmissingReturnList" onClick="clickmissingReturnListBtn(1)">항목추가</button>
+			<div id="missingReturnListCon">
+			</div>
+			반품배송비 청구 여부&nbsp;
+			<select id="returnDeleveryType">
+				<option value="0" selected>미청구</option>
+				<option value="2500">편도</option>
+				<option value="5000">왕복</option>
+			</select>
+			<br/>
+			<input type="button" class="button button--moema button--inverted button--text-thick button--size-s" onClick="resultmissingReturnCalc()" value="확인"/> 
+		</div>
+		<pre><a id="missingReturnTxtCalc" >-</a></pre>
+		<pre><a id="missingReturnTxt" >-</a></pre>
+	</div>
+
+	
+</div><!-- /container -->
+
+</body>
+
+</html>

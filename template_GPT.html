@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script
+      src="lib\jquery-3.4.1.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+     $(document).ready(function() {
+      $.ajax({
+        url: "data/spreadsheet_2.csv",
+        dataType: "text",
+        success: function(data) {
+          var sentences = data.split("\n");
+          for (var i = 0; i < sentences.length; i++) {
+            var sentence = sentences[i];
+            if (sentence) {
+              var sentenceData = sentence.split(",");
+              var buttonTitle = sentenceData[0];
+              var sentenceText = sentenceData[1];
+              $("#buttons").append(
+                "<button class='sentence-btn' data-sentence='" +
+                  sentenceText +
+                  "'>" +
+                  buttonTitle +
+                  "</button>"
+              );
+            }
+          }
+          $(".sentence-btn").click(function() {
+            var sentence = $(this).data("sentence");
+            var textArea = document.createElement("textarea");
+            textArea.value = sentence;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+            $("#display").text("Copied: " + sentence);
+          });
+        }
+      });
+    });
+    </script>
+
+  <style>
+     .buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px;
+      }
+      button {
+        background-color: white;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 14px;
+        color: black;
+        outline: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: lightgray;
+      }
+      .sentence {
+        margin: 10px;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+      }
+  </style>
+</head>
+<body>
+  <p>ver.2302281515</p>
+  <div id="buttons"></div>
+  <div id="display"></div>
+</body>
+</html>

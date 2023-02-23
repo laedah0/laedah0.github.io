@@ -1,0 +1,10 @@
+
+https://sell.smartstore.naver.com/#/naverpay/manage/order?detailSearch.type=PURCHASER_TEL_NO&detailSearch.keyword=34534534
+
+https://sell.smartstore.naver.com/o/m/orderDetail/2020011590692231/detail
+
+
+모바일 전화번호 검색
+https://sell.smartstore.naver.com/o/manage/order?detailSearch.type=PURCHASER_TEL_NO&detailSearch.keyword=010392030303
+https://sell.smartstore.naver.com/o/manage/order?detailSearch.type=PURCHASER_TEL_NO&detailSearch.keyword=010392030303
+https://sell.smartstore.naver.com/#/naverpay/manage/order?detailSearch.type=PURCHASER_TEL_NO&detailSearch.keyword=010392030303
