@@ -92,6 +92,7 @@
 				<option value="1">대신택배</option>
 			</select>
 		<label><input type="radio" name="orderSendType" id="orderSendInfoRadio_normal" value="normal" checked="">일반</label></input>&nbsp;&nbsp;
+		<label><input type="radio" name="orderSendType" id="orderSendInfoRadio_long-noreturn" value="long-noreturn" checked="">오배송_미수거</label></input>&nbsp;&nbsp;
 		<label><input type="radio" name="orderSendType" id="orderSendInfoRadio_long" value="long">오배송</label></input></br>
 
 		<input type="text" id="orderSendInfo" name="orderSendInfo" placeholder="송장번호" onChange="orderSendInfoTemplate(this.value)" onfocus="this.select()"> <button type="button" class="button button--moema button--inverted button--text-thick button--size-s" id="btn_orderSendInfo" onClick="orderSendInfoTemplate(orderSendInfo.value, deleveryCop.value)">변경</button> 
