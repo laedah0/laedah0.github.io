@@ -370,7 +370,8 @@ var orderTxt2CopyToClipboard = function()
 //발송택배송장안내
 //_num : 입력된 송장번호
 //_com : 택배사 0:대한통운, 1:대신택배
-var orderSendInfoTemplate = function(_num,_cop)
+//_detail : 택배 발송 내용물 내역
+var orderSendInfoTemplate = function(_num, _cop, _detail)
 {
 	if(isEmpty(_num)) 
 	{
@@ -395,26 +396,29 @@ var orderSendInfoTemplate = function(_num,_cop)
 			break;
 	}
 
+	//발송 상세 내역
+	var detail = _detail;
+
 	//택배 송장 안내 타입에 따른 문구 분류
 	switch(sendType.checkedValue())
 	{
 		case "normal":
 			//일반 택배 송장 안내
 			returnTxt = '[미건철물장식] 주문하신 상품이 다음과 같이 발송 됩니다.\n\n';
-			returnTxt += copName + ' ' + replaceNum; 
+			returnTxt += copName + ' ' + replaceNum + '\n내역 - ' + detail; 
 			returnTxt += '\n\n배송정보는 발송당일 늦은 저녁때 부터 아래 링크에서 확인하실 수 있습니다.\n감사합니다^^\n\n■ 배송조회 바로가기\n';
 			break;
 		case "long":
 			//오배송으로 인한 택배 송장 안내
 			returnTxt = '[미건철물장식] 오배송 문제로 불편을 드려 죄송합니다.\n주문하신 상품이 다음과 같이 재발송 됩니다. 꼼꼼히 검수하여 발송하도록 하겠습니다.\n\n';
-			returnTxt += copName + ' ' + replaceNum; 
+			returnTxt += copName + ' ' + replaceNum + '\n내역 - ' + detail; 
 			returnTxt += '\n\n배송정보는 발송당일 늦은 저녁때 부터 아래 링크에서 확인하실 수 있습니다.\n아울러 기존 오배송된 제품은 수거 접수 되었습니다. 1~2일 이내 기사님 방문 드리며 피스 등 누락 없이 받으신 포장지로 재포장 후 안전하게 전달해 주시면 감사드리겠습니다.\n감사합니다^^\n\n■ 배송조회 바로가기\n';
 			break;
 		case "long-noreturn":
 			//오배송 수거없음 송장안내
 			returnTxt = '[미건철물장식]제품문제로 불편을 드려 죄송합니다. 해당 상품은 새 상품으로 다음과 같이 재발송됩니다.\n아울러 기존 파손품은 배송비 문제로 수거택배가 없습니다. 번거로우시더라도 별도 파기 부탁드리오니 너른 양해 부탁드립니다.\n\n';
-			returnTxt += copName + ' ' + replaceNum; 
-			returnTxt += '\n내역 - \n\n배송정보는 발송당일 늦은 저녁때 부터 아래 링크에서 확인하실 수 있습니다.\n다시 한번 상품 문제로 불편을 드린 점에 대해 양해 말씀 드리며 관련 궁금하신점이 있으시면 언제든지 문의 주시기 바랍니다. 감사합니다.\n\n■ 배송조회 바로가기\n';
+			returnTxt += copName + ' ' + replaceNum + '\n내역 - ' + detail; 
+			returnTxt += '\n\n배송정보는 발송당일 늦은 저녁때 부터 아래 링크에서 확인하실 수 있습니다.\n다시 한번 상품 문제로 불편을 드린 점에 대해 양해 말씀 드리며 관련 궁금하신점이 있으시면 언제든지 문의 주시기 바랍니다. 감사합니다.\n\n■ 배송조회 바로가기\n';
 	}
 
 	if(_cop==0)
