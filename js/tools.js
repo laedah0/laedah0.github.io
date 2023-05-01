@@ -944,7 +944,7 @@ $(document).ready(function() {
 	clickmissingReturnListBtn(1);
 
 	//템플릿 셋팅
-	setTemplate('data/templateList_230109.json');
+	setTemplate('data/templateList_230501.json');
 	//setTemplateCSV('data/templateList.csv');
 	
 	//가격표 셋팅
