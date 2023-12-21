@@ -605,7 +605,7 @@ var resultmissingReturnCalc = function()
 			returnTxt += '반품배송비는 요청에 따라 환불금에서 자동 차감 예정입니다. ';
 			break;
 		
-		case 1:
+		case 2900:
 			//발송편도배송비만 청구
 			returnTxt += '네이버 환불정책에 의해 전액 환불 기준으로 반품접수시 환불금에서 차감요청이 없는 경우 별도 합산청구됩니다.\n';
 			returnTxt += '내역 : ' + missingReturnListTxt + '발송편도배송비(' + deleveryPriceTxt + ')';
@@ -613,7 +613,8 @@ var resultmissingReturnCalc = function()
 			returnTxt += '환불금은 주문시 지불하신 배송비 포함 결제금액 전액 환불 예정입니다. ';
 			break;
 
-		case 2:
+		case 3100:
+		case 6000:
 			//수거편도 혹은 왕복반품배송비 포함 전액 청구
 			returnTxt += '네이버 환불정책에 의해 전액 환불 기준으로 반품접수시 환불금에서 차감요청이 없는 경우 별도 합산청구됩니다.\n';
 			returnTxt += '내역 : ' + missingReturnListTxt + '반품배송비(' + deleveryPriceTxt + ')';
