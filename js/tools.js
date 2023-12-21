@@ -596,32 +596,18 @@ var resultmissingReturnCalc = function()
 	returnTxt += '[미건철물장식] 저희 제품을 이용해 주심에 대단히 감사드리며 요청하신 반품에 대한 안내드립니다.\n\n';
 	returnTxt += '반품 시 누락된 상품이 있으며 아래 내역 확인 부탁드립니다.\n';
 	
-	switch(deleveryPrice)
+	if(deleveryPrice==0)
 	{
-		case 0:
-			//반품배송비 제외 제품가만 청구
-			returnTxt += '내역 : ' + missingReturnListTxt;
-			returnTxt += '\n입금계좌 : 기업 010-2794-9795 박상은, 금액 총'+comma(totalPrice)+'원\n\n';
-			returnTxt += '반품배송비는 요청에 따라 환불금에서 자동 차감 예정입니다. ';
-			break;
-		
-		case 2900:
-			//발송편도배송비만 청구
-			returnTxt += '네이버 환불정책에 의해 전액 환불 기준으로 반품접수시 환불금에서 차감요청이 없는 경우 별도 합산청구됩니다.\n';
-			returnTxt += '내역 : ' + missingReturnListTxt + '발송편도배송비(' + deleveryPriceTxt + ')';
-			returnTxt += '\n입금계좌 : 기업 010-2794-9795 박상은, 금액 총'+comma(totalPrice)+'원\n\n';
-			returnTxt += '환불금은 주문시 지불하신 배송비 포함 결제금액 전액 환불 예정입니다. ';
-			break;
-
-		case 3100:
-		case 6000:
-			//수거편도 혹은 왕복반품배송비 포함 전액 청구
-			returnTxt += '네이버 환불정책에 의해 전액 환불 기준으로 반품접수시 환불금에서 차감요청이 없는 경우 별도 합산청구됩니다.\n';
-			returnTxt += '내역 : ' + missingReturnListTxt + '반품배송비(' + deleveryPriceTxt + ')';
-			returnTxt += '\n입금계좌 : 기업 010-2794-9795 박상은, 금액 총'+comma(totalPrice)+'원\n\n';
-			returnTxt += '환불금은 주문시 지불하신 배송비 포함 결제금액 전액 환불 예정입니다. ';
-			break;
-
+		//반품배송비 제외 제품가만 청구
+		returnTxt += '내역 : ' + missingReturnListTxt;
+		returnTxt += '\n입금계좌 : 기업 010-2794-9795 박상은, 금액 총'+comma(totalPrice)+'원\n\n';
+		returnTxt += '반품배송비는 요청에 따라 환불금에서 자동 차감 예정입니다. ';
+	} else {
+		//발송편도배송비만 청구
+		returnTxt += '네이버 환불정책에 의해 전액 환불 기준으로 반품접수시 환불금에서 차감요청이 없는 경우 별도 합산청구됩니다.\n';
+		returnTxt += '내역 : ' + missingReturnListTxt + '반품배송비(' + deleveryPriceTxt + ')';
+		returnTxt += '\n입금계좌 : 기업 010-2794-9795 박상은, 금액 총'+comma(totalPrice)+'원\n\n';
+		returnTxt += '환불금은 주문시 지불하신 배송비 포함 결제금액 전액 환불 예정입니다. ';
 	}
 	
 	returnTxt += '실제 환불일은 네이버쇼핑 결제방식에 따라 달라질 수 있으며 관련 궁금하신 점은 네이버쇼핑 고객센터로 문의주세요.\n\n';
