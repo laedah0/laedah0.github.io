@@ -69,7 +69,7 @@ function handlePasteTrg()
 {
 	alert('!');
 
-	var event = document.createEvent('Event');
+j	var event = document.createEvent('Event');
 	event.initEvent('paste');
 
 	document.getElementById('editableDiv').dispatchEvent(event);
