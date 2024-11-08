@@ -55,13 +55,8 @@
 
 <div class="container">
 	<header class="codrops-header">
-		<nav class="codrops-demos">
-			<a href="index.html">|</a>
-			<a class="current-demo" href="tools.html">Tool</a>
-			<a href="template.html">Tamp</a>
-			<a href="templateEditor.html">Edit</a>
-			<a href="template_GPT.html">TampGPT</a>
-		</nav>
+		 <!-- 네비게이션이 여기에 동적으로 로드됨 -->
+		 <div id="navigationContainer"></div>
 	</header>
 
 	<div>
@@ -176,7 +171,26 @@
 	</div>
 
 </div><!-- /container -->
+<script>
+	// 페이지 로드 시 네비게이션 로드
+	$(document).ready(function() {
+		// 네비게이션 로드
+		$("#navigationContainer").load("navigation.html", function() {
+			// 현재 페이지 메뉴 활성화
+			const currentPage = window.location.pathname.split("/").pop();
+			$(".codrops-demos a").each(function() {
+				if ($(this).attr("href") === currentPage) {
+					$(this).addClass("current-demo");
+				}
+			});
+		});
 
+		// 기존 템플릿 로드
+		loadTemplates();
+	});
+
+	
+</script>
 </body>
 
 </html>

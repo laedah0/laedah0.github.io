@@ -3,43 +3,26 @@
 //<script type="text/javascript">
 
 function download_get(_url) {
+  // ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-	// ÀÌ¹Ì ¼¼ÆÃµÈ ³×ÀÌ¹ö ¸ð¹ÙÀÏÀÇ ÁÖ¼Ò¸¦ °¡Á®¿È 
+  //var str_url = $('#input_url').val();
 
-	//var str_url = $('#input_url').val();
+  // ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ textAreaï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-	
+  var jqxhr = $.get(_url, function (data) {
+    this.data = data;
+  });
 
-	// ³×ÀÌ¹ö ¸ð¹ÙÀÏÀÇ ¼Ò½º¸¦ °¡Á®¿Í textArea¿¡ »ðÀÔ 
-
-	var jqxhr = $.get(_url, function(data) {
-
-		this.data = data;
-
-	});
-
-	return jqxhr.data;
-
+  return jqxhr.data;
 }
 
-
-
 function download_post() {
-
-	// ÀÌ¹Ì ¼¼ÆÃµÈ ³×ÀÌ¹ö ¸ð¹ÙÀÏÀÇ ÁÖ¼Ò¸¦ °¡Á®¿È 
-
-	//var str_url = $('#input_url').val();
-
-	
-
-	// ³×ÀÌ¹ö ¸ð¹ÙÀÏÀÇ ¼Ò½º¸¦ °¡Á®¿Í textArea¿¡ »ðÀÔ 
-
-	//var jqxhr = $.post(str_url, function(data) {
-
-		//$('#textvw').val(data);
-
-	//});
-
+  // ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  //var str_url = $('#input_url').val();
+  // ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ textAreaï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+  //var jqxhr = $.post(str_url, function(data) {
+  //$('#textvw').val(data);
+  //});
 }
 
 /**
@@ -48,7 +31,7 @@ $(document).ready(function() {
 
 	$('button').click(function() {
 
-		// ÀÌ¸§À» ÁÖÁö ¾Ê¾Ò±â ¶§¹®¿¡ index¼ø¼­¿¡ ÀÇÇØ¼­ °ªÀ» °¡Á®¿È 
+		// ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ indexï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 
 		switch($('button').index(this)) {
 
@@ -88,3 +71,20 @@ $(document).ready(function() {
 <textarea id='textvw' rows="" cols="" style='height:200px; width:320px;'></textarea>
 
 **/
+
+function loadHTML(elementId, url) {
+  fetch(url)
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById(elementId).innerHTML = data;
+
+      // í˜„ìž¬ íŽ˜ì´ì§€ ë©”ë‰´ í™œì„±í™”
+      const currentPage = window.location.pathname.split("/").pop();
+      document.querySelectorAll(".codrops-demos a").forEach((link) => {
+        if (link.getAttribute("href") === currentPage) {
+          link.classList.add("current-demo");
+        }
+      });
+    })
+    .catch((error) => console.error("Navigation load error:", error));
+}

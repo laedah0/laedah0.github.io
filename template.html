@@ -75,12 +75,8 @@
   <body>
     <div class="container">
       <header class="codrops-header">
-        <nav class="codrops-demos">
-          <a href="index.html">|</a>
-          <a href="tools.html">Tool</a>
-          <a class="current-demo" href="template.html">Tamp</a>
-          <a href="templateEditor.html">Edit</a>
-        </nav>
+        <!-- 네비게이션이 여기에 동적으로 로드됨 -->
+        <div id="navigationContainer"></div>
       </header>
 
       <div>v2301051339</div>
@@ -106,16 +102,20 @@
         <div class="template-edit-section">
           <!-- 템플릿 텍스트 영역 -->
           <textarea id="templeteTxt" class="template-textarea" rows="5">-</textarea>
-          
+
           <!-- SMS 전송 섹션 -->
           <div class="sms-section">
-            <input type="text" 
-                   id="phoneNumber" 
-                   placeholder="전화번호 입력" 
-                   onkeyup="formatPhoneNumber(this)" 
-                   onpaste="handlePhonePaste(event)">
-            <button onclick="sendSMS()" 
-                    class="button button--moema button--inverted button--text-thick button--size-s">
+            <input
+              type="text"
+              id="phoneNumber"
+              placeholder="전화번호 입력"
+              onkeyup="formatPhoneNumber(this)"
+              onpaste="handlePhonePaste(event)"
+            />
+            <button
+              onclick="sendSMS()"
+              class="button button--moema button--inverted button--text-thick button--size-s"
+            >
               전송
             </button>
           </div>
@@ -123,5 +123,27 @@
       </div>
     </div>
     <!-- /container -->
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-2.2.1.min.js"
+    ></script>
+    <script>
+      // 페이지 로드 시 네비게이션 로드
+      $(document).ready(function () {
+        // 네비게이션 로드
+        $("#navigationContainer").load("navigation.html", function () {
+          // 현재 페이지 메뉴 활성화
+          const currentPage = window.location.pathname.split("/").pop();
+          $(".codrops-demos a").each(function () {
+            if ($(this).attr("href") === currentPage) {
+              $(this).addClass("current-demo");
+            }
+          });
+        });
+
+        // 기존 템플릿 로드
+        loadTemplates();
+      });
+    </script>
   </body>
 </html>

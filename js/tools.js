@@ -283,11 +283,6 @@ function addOrderList() {
 var orderShareTxt = "_"; //공유용 텍스트
 
 function resultorderCalc() {
-  /*
-	[미건철물장식] 상품 수량, 배송비(2,500원) 및 설치용 피스 포함, 총 금액 원입니다.
-입금계좌는 기업 010-2794-9795 박상은 입니다.
-확인해보시고 입금하신 후 받으실 분 성함/주소/연락처 부탁드립니다^^ 감사합니다!
-*/
   var deleveryType = document.getElementById("deleveryType");
   var totalPrice = 0;
   var totalPriceTxt = "";
@@ -387,10 +382,16 @@ function resultorderCalc() {
   //console.log(orderTxt2);
 
   orderTxtCalc.text = "calc : " + totalPriceTxt;
-  orderTxt.text = returnTxt + " (copied)";
+  // orderTxt.text = returnTxt + " (copied)";
+  updateOutputText(returnTxt);
 
   copyToCB(returnTxt);
   return null;
+}
+
+// 통합된 텍스트 업데이트 함수
+function updateOutputText(text) {
+  document.getElementById("templeteTxt").textContent = text;
 }
 
 //////////////////////////
@@ -467,7 +468,8 @@ var orderSendInfoTemplate = function (_num, _cop, _detail) {
   returnTxt += d.getURL();
 
   copyToCB(returnTxt);
-  orderSendInfoText.text = returnTxt;
+  //orderSendInfoText.text = returnTxt;
+  updateOutputText(returnTxt);
   returnTxt = "";
 
   return null;
@@ -692,7 +694,9 @@ var resultmissingReturnCalc = function () {
 //*/
 
   missingReturnTxtCalc.text = "calc : " + totalPriceTxt;
-  missingReturnTxt.text = returnTxt + " (copied)";
+  // 241108 수정
+  // missingReturnTxt.text = returnTxt + " (copied)";
+  updateOutputText(returnTxt);
 
   copyToCB(returnTxt);
 
@@ -951,12 +955,33 @@ var deleteSpecificTxt = function (_num) {
   originTxtoldVal = originTxtcurrentVal;
 
   var returnNum = onlyNumber(originTxtcurrentVal);
-  resultText.text = returnNum + " (copied)";
+  // 241108 수정
+  // resultText.text = returnNum + " (copied)";
+  document.getElementById("outputText").textContent = returnNum + " (copied)";
   copyToCB(returnNum);
   returnNum = null;
 
   return null;
 };
+
+////////////////////////////////////////
+//html Loader
+function loadHTML(elementId, url) {
+  fetch(url)
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById(elementId).innerHTML = data;
+
+      // 현재 페이지 메뉴 활성화
+      const currentPage = window.location.pathname.split("/").pop();
+      document.querySelectorAll(".codrops-demos a").forEach((link) => {
+        if (link.getAttribute("href") === currentPage) {
+          link.classList.add("current-demo");
+        }
+      });
+    })
+    .catch((error) => console.error("Navigation load error:", error));
+}
 
 //////////////////////////////////////////////////////
 //Document Ready!!

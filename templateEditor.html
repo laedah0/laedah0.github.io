@@ -33,6 +33,24 @@
 	.templeteBox{display: block;margin: 4px 79px 0 10px;}
 	.templeteBox input{width: 100%}
 	.div{line-height:200%}
+
+	/* SMS 전송 기능 스타일 */
+	.template-edit-section {
+        margin: 10px 0;
+      }
+
+      .template-textarea {
+        width: 100%;
+        min-height: 200px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 14px;
+        resize: vertical;
+        margin-bottom: 10px;
+      }
+	
 </style>
 
 
@@ -47,20 +65,16 @@
 <script type="text/javascript" src="js/template.js"></script>
 <script type="text/javascript" src="js/htmlLoader.js"></script>
 
-
-
+<!-- Pushbullet API 스크립트 추가 -->
+<script type="text/javascript" src="js/pushbullet.js"></script>
 
 </head>
 <body>
 
 <div class="container">
 	<header class="codrops-header">
-		<nav class="codrops-demos">
-			<a href="index.html">|</a>
-			<a href="tools.html">Tool</a>
-			<a href="template.html">Tamp</a>
-			<a class="current-demo" href="templateEditor.html">Edit</a>
-		</nav>
+		 <!-- 네비게이션이 여기에 동적으로 로드됨 -->
+		 <div id="navigationContainer"></div>
 	</header>
 
 
@@ -83,7 +97,7 @@
 			<input type="button" class="button button--moema button--inverted button--text-thick button--size-s" onClick="orderTxt2CopyToClipboard()" value="공유"/>
 		</div>
 		<pre><a id="orderTxtCalc" >-</a></pre>
-		<pre><a id="orderTxt" >-</a></pre>
+		
 	</div>
 
 	<div><h3>발송택배송장안내</h3>
@@ -99,7 +113,6 @@
 		<input type="text" id="orderSendInfoDetail" name="orderSendInfoDetail" placeholder="내역" onfocus="this.select()" style="width: 290px;"></t>
 		<button type="button" class="button button--moema button--inverted button--text-thick button--size-s" id="btn_orderSendInfo" onClick="orderSendInfoTemplate(orderSendInfo.value, deleveryCop.value, orderSendInfoDetail.value)">변경</button> 
 
-		<pre><a id="orderSendInfoText" >-</a></pre>
 	</div>
 	
 	<div><h3>반품누락 청구서 제작</h3>
@@ -119,12 +132,52 @@
 			<input type="button" class="button button--moema button--inverted button--text-thick button--size-s" onClick="resultmissingReturnCalc()" value="확인"/> 
 		</div>
 		<pre><a id="missingReturnTxtCalc" >-</a></pre>
-		<pre><a id="missingReturnTxt" >-</a></pre>
+		
 	</div>
+
+	<!-- 템플릿 텍스트 영역 -->
+	<textarea id="templeteTxt" class="template-textarea" rows="5">-</textarea>
+
+	<!-- SMS 전송 섹션 -->
+	<div class="sms-section">
+		<input
+		  type="text"
+		  id="phoneNumber"
+		  placeholder="전화번호 입력"
+		  onkeyup="formatPhoneNumber(this)"
+		  onpaste="handlePhonePaste(event)"
+		/>
+		<button
+		  onclick="sendSMS()"
+		  class="button button--moema button--inverted button--text-thick button--size-s"
+		>
+		  전송
+		</button>
+	  </div>
+	
 
 	
 </div><!-- /container -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script>
+        // 페이지 로드 시 네비게이션 로드
+        $(document).ready(function() {
+            // 네비게이션 로드
+            $("#navigationContainer").load("navigation.html", function() {
+                // 현재 페이지 메뉴 활성화
+                const currentPage = window.location.pathname.split("/").pop();
+                $(".codrops-demos a").each(function() {
+                    if ($(this).attr("href") === currentPage) {
+                        $(this).addClass("current-demo");
+                    }
+                });
+            });
 
+            // 기존 템플릿 로드
+            loadTemplates();
+        });
+
+    </script>
 </body>
 
 </html>
