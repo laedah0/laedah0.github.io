@@ -1,97 +1,127 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>MK CS Tools</title>
 
-<title>MK CS Tools</title>
+    <meta name="description" content="미건철물장식" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Laedah0" />
 
-<meta name="description" content="미건철물장식" />
-<meta name="keywords" content="" />
-<meta name="author" content="Laedah0" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="css/style2.css" />
+    <link rel="stylesheet" type="text/css" href="css/vicons-font.css" />
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <!--link rel="stylesheet" type="text/css" href="css/buttons.css" /-->
 
-<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-<link rel="stylesheet" type="text/css" href="css/demo.css" />
-<link rel="stylesheet" type="text/css" href="css/icons.css" />
-<link rel="stylesheet" type="text/css" href="css/style2.css" />
-<link rel="stylesheet" type="text/css" href="css/vicons-font.css" />
-<link rel="stylesheet" type="text/css" href="css/base.css" />
-<!--link rel="stylesheet" type="text/css" href="css/buttons.css" /-->
+    <script src="js/modernizr.custom.js"></script>
 
-<script src="js/modernizr.custom.js"></script>
+    <link rel="apple-touch-icon-precomposed" href="favicon-152.png" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
+    <style>
+      .templeteBox {
+        display: block;
+        margin: 4px 79px 0 10px;
+      }
+      .templeteBox input {
+        width: 100%;
+      }
+      .div {
+        line-height: 200%;
+      }
 
+      /* SMS 전송 기능 스타일 */
+      .template-edit-section {
+        margin: 10px 0;
+      }
 
+      .template-textarea {
+        width: 100%;
+        min-height: 200px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 14px;
+        resize: vertical;
+        margin-bottom: 10px;
+      }
+    </style>
 
-<link rel="apple-touch-icon-precomposed" href="favicon-152.png">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-2.2.1.min.js"
+    ></script>
+    <!--<script src="lib/jquery-3.4.1.min.js"></script>-->
 
-<style>
-	.templeteBox{display: block;margin: 4px 79px 0 10px;}
-	.templeteBox input{width: 100%}
-	.div{line-height:200%}
-</style>
+    <script type="text/javascript" src="js/browserChk.js"></script>
+    <script type="text/javascript" src="js/jquery.csv.min.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/tools.js"></script>
+    <script type="text/javascript" src="js/template.js"></script>
+    <script type="text/javascript" src="js/htmlLoader.js"></script>
 
+    <!-- Pushbullet API 스크립트 추가 -->
+    <script type="text/javascript" src="js/pushbullet.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="codrops-header">
+        <nav class="codrops-demos">
+          <a href="index.html">|</a>
+          <a href="tools.html">Tool</a>
+          <a class="current-demo" href="template.html">Tamp</a>
+          <a href="templateEditor.html">Edit</a>
+        </nav>
+      </header>
 
-<link rel="icon" href="favicon.ico" type="image/x-icon">
+      <div>v2301051339</div>
+      <div>
+        <h3>자주 사용하는 문구</h3>
+        <div id="templateSelect"></div>
+        <h5>- 상품</h5>
+        <div id="favoritTemp_1"></div>
+        <h5>- 반품</h5>
+        <div id="favoritTemp_2"></div>
+        <h5>- 교환</h5>
+        <div id="favoritTemp_3"></div>
+        <h5>- 링크</h5>
+        <div id="favoritTemp_4"></div>
+        <h5>- 주문</h5>
+        <div id="favoritTemp_5"></div>
+        <h5>- 배송</h5>
+        <div id="favoritTemp_6"></div>
+        <div id="favoritTemp"></div>
+        <!--<pre><a id="templeteTxt" >-</a></pre>-->
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-<!--<script src="lib/jquery-3.4.1.min.js"></script>-->
-
-<script type="text/javascript" src="js/browserChk.js"></script>
-<script type="text/javascript" src="js/jquery.csv.min.js"></script>
-<script type="text/javascript" src="js/utils.js"></script>
-<script type="text/javascript" src="js/tools.js"></script>
-<script type="text/javascript" src="js/template.js"></script>
-<script type="text/javascript" src="js/htmlLoader.js"></script>
-
-
-
-</head>
-<body>
-
-<div class="container">
-	<header class="codrops-header">
-		<nav class="codrops-demos">
-			<a href="index.html">|</a>
-			<a href="tools.html">Tool</a>
-			<a class="current-demo" href="template.html">Tamp</a>
-			<a href="templateEditor.html">Edit</a>
-		</nav>
-	</header>
-
-	<div>v2301051339</div>
-	<div><h3>자주 사용하는 문구</h3>
-		<div id="templateSelect">
-		</div>
-		<h5>- 상품</h5>
-		<div id="favoritTemp_1">
-		</div>	
-		<h5>- 반품</h5>
-		<div id="favoritTemp_2">
-		</div>	
-		<h5>- 교환</h5>
-		<div id="favoritTemp_3">
-		</div>	
-		<h5>- 링크</h5>
-		<div id="favoritTemp_4">
-		</div>	
-		<h5>- 주문</h5>
-		<div id="favoritTemp_5">
-		</div>	
-		<h5>- 배송</h5>
-		<div id="favoritTemp_6">
-		</div>	
-		<div id="favoritTemp">
-		</div>	
-		<pre><a id="templeteTxt" >-</a></pre>
-	</div>
-
-</div><!-- /container -->
-
-</body>
-
+        <!-- 기존 코드를 아래와 같이 변경 -->
+        <div class="template-edit-section">
+          <!-- 템플릿 텍스트 영역 -->
+          <textarea id="templeteTxt" class="template-textarea" rows="5">-</textarea>
+          
+          <!-- SMS 전송 섹션 -->
+          <div class="sms-section">
+            <input type="text" 
+                   id="phoneNumber" 
+                   placeholder="전화번호 입력" 
+                   onkeyup="formatPhoneNumber(this)" 
+                   onpaste="handlePhonePaste(event)">
+            <button onclick="sendSMS()" 
+                    class="button button--moema button--inverted button--text-thick button--size-s">
+              전송
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /container -->
+  </body>
 </html>
